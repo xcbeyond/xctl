@@ -17,8 +17,14 @@ package cmd
 
 import (
 	"fmt"
+	"xctl/core/install"
 
 	"github.com/spf13/cobra"
+)
+
+const (
+	docker     = "docker"
+	kubernetes = "kubernetes"
 )
 
 // installCmd represents the install command
@@ -28,6 +34,14 @@ var installCmd = &cobra.Command{
 	Long:  `Install the application by application name, like docker, kubernetes...`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("install called," + args[0])
+		app := args[0]
+		if app == "docker" { // install docker
+			install.DockerInstall()
+		} else if app == "kubernetes" { // install kubernetes
+
+		} else {
+
+		}
 	},
 }
 
